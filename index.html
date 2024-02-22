@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="A Generalist Robot Policy For Manipulation and Navigation">
+  <meta name="keywords" content="Robot Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Extreme Cross-Embodiment Learning</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!--
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+-->
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Extreme Cross-Embodiment Learning</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://jonathanyang0127.github.io">Jonathan Yang</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a>Catherine Glossop</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a>Arjun Bhorkar</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://people.eecs.berkeley.edu/~shah/">Dhruv Shah</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://ai.stanford.edu/~cbfinn/">Chelsea Finn</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://dorsa.fyi">Dorsa Sadigh</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://people.eecs.berkeley.edu/~svlevine/">Sergey Levine</a><sup>2</sup>,
+            </span>
+	</div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Stanford University,</span>
+            <span class="author-block"><sup>2</sup>University of California, Berkeley</span>
+            <span class="author-block"><sup>3</sup>Robotics at Google</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+	     <!--
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+	     -->
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=d-WkjFaMOes"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+             <!-- 
+	     <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+	    -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./static/images/teaser.png"
+                 class="teaser-image"
+                 alt="Extreme Cross-Embodiment Learning"/>
+      <h2 class="subtitle has-text-centered">
+      We train an extreme cross-embodiment robotic policy that is capable of controlling diverse robots across navigation and manipulation. We then show that robotic agents can benefit from data collected across significantly different embodiments.
+	</h2>
+    </div>
+  </div>
+</section>
+
+<!--/
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Navigation Videos</h2>
+        </div>
+      </div>
+    </div>
+</section> 
+-->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-locobot5">
+          <video poster="" id="locobot5" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/locobot_first_floor_edited.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-locobot4">
+          <video poster="" id="locobot4" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/locobot_outside.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-locobot3">
+          <video poster="" id="locobot3" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/jackal_kitchen_edited.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-locobot2">
+          <video poster="" id="locobot2" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/jackal_first_floor_third_edited.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-locobot1">
+          <video poster="" id="locobot1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/go1_outdoor.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-jackal1">
+          <video poster="" id="jackal1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/go1_second_floor_edited.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-jackal2">
+          <video poster="" id="jackal2" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/drone_traj.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--/
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Manipulation Videos</h2>
+        </div>
+      </div>
+    </div>
+</section>
+-->
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+	<div class="item item-cluttered_grasp_v2">
+          <video poster="" id="cluttered_grasp_v2" autoplay controls muted loop playsinline height="50%">
+            <source src="./static/videos/cluttered_grasp_v2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shelf_manipulation">
+          <video poster="" id="shelf_manipulation" autoplay controls muted loop playsinline height="50%">
+            <source src="./static/videos/shelf_manip.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-bridge_thirdperson">
+          <video poster="" id="bridge_thirdperson" autoplay controls muted loop playsinline height="50%">
+            <source src="./static/videos/toy_kitchen_v2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+       <div class="item item-cluttered_grasp_novel_battery">
+          <video poster="" id="cluttered_grasp_novel_battery" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/novel_cluttered.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-two_object_grasp_candy">
+          <video poster="" id="two_object_grasp_candy" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/two_object_v2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+          We train the first <i>extreme cross embodiment</i> policy capable of controlling a heterogenous set of embodiments, including robotic arms, drones, quadrupeds, mobile bases, and mobile manipulators.
+	  </p>
+          <p>
+	  We conduct over 1000 experiments to empirically characterize the effects of dataset size and variability, model size, and architecture choices. Our experiments reveal that policies co-trained with all manipulation and mobile data demonstrate an average of 19% improvement over 5 different manipulation tasks than training with manipulation data alone, and a 12% improvement over 3 different navigation platforms.
+	</p>
+	<p>
+	We show that our policy can generalize to two new robots: a mobile manipulator and a quadrotor, without any data specific to this embodiments. 	
+       </p>
+        </div>
+      </div>
+    </div>
+
+     <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/d-WkjFaMOes?si=vKbV2DlkUOs6BxdZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+	</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+        <div class="column is-full-width">
+	<!-- Re-rendering. -->
+        <h2 class="title is-3">Manipulation and Navigation as Unified Goal-Reaching</h2>
+        <div class="content has-text-justified">
+          <p>
+        While manipulation and navigation seemingly differ significantly in terms of hardware, observations, and action representations, they contain many similar sensorimotor principles. For example, both domains require the learned robot policy to have an understanding of collisions and geometry. Both domains also require the agent to perform some form of visual servoing. We leverage these insights to pose manipulation and navigation as a single goal-reaching task. 
+          </p>
+        </div>
+	<div class="content has-text-centered">
+          <video id="moma-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/equivariance.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Re-rendering. -->
+	</div>
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Generalization to Novel Objects</h2>
+        </div>
+      </div>
+        <div class="content has-text-justified">
+          <p>
+          Co-training with navigation data allows for a 30% improvement in a goal-conditioned grasping task. The policy is evaluated on 5 objects that were not seen in the training dataset, and is tasked with grasping the correct object given its goal image.
+          </p>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item item-cluttered_grasp_novel_battery">
+          <video poster="" id="cluttered_grasp_novel_battery" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_battery/eval.MOV"
+                    type="video/mp4">
+          </video>
+        </div>
+       <div class="item item-cluttered_grasp_novel_candy">
+          <video poster="" id="cluttered_grasp_novel_candy" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_candy/eval.MOV"
+                    type="video/mp4">
+          </video>
+        </div>
+       <div class="item item-cluttered_grasp_novel_carrot">
+          <video poster="" id="cluttered_grasp_novel_battery" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_carrot/eval.mov"
+                    type="video/mp4">
+          </video>
+        </div>
+       <div class="item item-cluttered_grasp_novel_measuring_cup">
+          <video poster="" id="cluttered_grasp_novel_measuring_cup" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_measuring_cup/eval.mov"
+                    type="video/mp4">
+          </video>
+        </div>
+       <div class="item item-cluttered_grasp_novel_tool">
+          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Generalization to Novel Navigation Scenes and Embodiments</h2>
+        </div>
+      </div>
+        <div class="content has-text-justified">
+          <p>
+          Given a topological map of the environment, our policy can control new robots to navigate around scenes while avoiding obstacles.
+	  </p>
+        </div>
+    </div>
+</section>
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-drone">
+          <video poster="" id="drone" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/drone_traj.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-go11">
+          <video poster="" id="go11" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/go1_outdoor.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-locobot5">
+          <video poster="" id="locobot5" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/go1_second_floor_edited.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-jackal1">
+          <video poster="" id="jackal1" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/jackal_first_floor_third_edited.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+        <div class="column is-full-width">
+	<!-- Re-rendering. -->
+        <h2 class="title is-3">Zero-shot Mobile Manipulator Control</h2>
+        <div class="content has-text-justified">
+          <p>
+          Our extreme cross-embodiment policy can control a mobile manipulator with no data specific to this embodiment, showing that it can benefit from static manipulation and navigation datasets.
+          </p>
+        </div>
+	<div class="content has-text-centered">
+          <video id="moma-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/moma.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Re-rendering. -->
+	</div>
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+  </div>
+</section>
+
+<!--
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section>
+-->
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website was adapted from <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
