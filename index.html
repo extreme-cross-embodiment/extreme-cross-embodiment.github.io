@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="A Generalist Robot Policy For Manipulation and Navigation">
+        content="Extreme Cross-Embodiment Learning For Manipulation and Navigation">
   <meta name="keywords" content="Robot Learning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Extreme Cross-Embodiment Learning</title>
@@ -39,6 +39,133 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <style>
+  body {font-family: Arial;}
+
+  /* Style the tab */
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+
+  /* Style the close button */
+  .topright {
+    float: right;
+    cursor: pointer;
+    font-size: 28px;
+  }
+
+  .topright:hover {color: red;}
+
+.video {
+    position: relative;
+    padding-bottom: 35%;
+}
+.video iframe {
+    width: 100%;
+    height: 100%;
+}
+.video-layout {
+    max-width: 500px;
+    border: 1px solid green;
+}
+#vid-left {
+    float: left;
+    padding:5px;
+    width:20%;
+    box-sizing:border-box;
+}
+#vid-leftmid {
+    float: left;
+    padding:5px;
+    width:20%;
+    box-sizing:border-box;
+}
+#vid-mid {
+    float: left;
+    padding:5px;
+    width:20%;
+    box-sizing:border-box;
+}
+#vid-rightmid {
+    float: left;
+    padding:5px;
+    width:20%;
+    box-sizing:border-box;
+}
+#vid-right {
+    float: left;
+    padding:5px;
+    width:20%;
+    box-sizing:border-box;
+}
+
+#vid-twoleft {
+    float: left;
+    padding:5px;
+    width:20%;
+    box-sizing:border-box;
+    float: left; 
+    margin-right: 20%;
+    margin-left: 20%;
+}
+.videoequi {
+    position: relative;
+}
+#vid-tworight {
+    float: left;
+    padding:5px;
+    width:20%;
+    box-sizing:border-box;
+}
+#vid-twoleftequi {
+    float: left;
+    padding:5px;
+    width:49%;
+    box-sizing:border-box;
+    float: left; 
+    margin-right: 1%;
+    margin-left: 1%;
+}
+#vid-tworightequi {
+    float: left;
+    padding:5px;
+    width:49%;
+    box-sizing:border-box;
+}
+  </style>
+
 </head>
 <body>
 
@@ -89,7 +216,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Extreme Cross-Embodiment Learning</h1>
+          <h1 class="title is-1 publication-title">Extreme Cross-Embodiment Learning for Manipulation and Navigation</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://jonathanyang0127.github.io">Jonathan Yang</a><sup>1</sup>,</span>
@@ -250,53 +377,49 @@
                     type="video/mp4">
           </video>
         </div>
+	<div class="item item-cluttered_grasp_compressed">
+          <video poster="" id="cluttered_grasp_compressed" autoplay controls muted loop playsinline height="50%">
+            <source src="./static/videos/cluttered_compressed.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-shelf_manipulation_compressed">
+          <video poster="" id="shelf_manipulation_compressed" autoplay controls muted loop playsinline height="50%">
+            <source src="./static/videos/shelf_manip_compressed.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-bridge_thirdperson_compressed">
+          <video poster="" id="bridge_thirdperson_compressed" autoplay controls muted loop playsinline height="50%">
+            <source src="./static/videos/toy_kitchen_compressed.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!--/
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Manipulation Videos</h2>
-        </div>
-      </div>
-    </div>
-</section>
--->
+<!--
 <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
-	<div class="item item-cluttered_grasp_v2">
-          <video poster="" id="cluttered_grasp_v2" autoplay controls muted loop playsinline height="50%">
-            <source src="./static/videos/cluttered_grasp_v2.mp4"
+	<div class="item item-cluttered_grasp_compressed">
+          <video poster="" id="cluttered_grasp_compressed" autoplay controls muted loop playsinline height="50%">
+            <source src="./static/videos/cluttered_compressed.mp4"
                     type="video/mp4">
           </video>
         </div>
-        <div class="item item-shelf_manipulation">
-          <video poster="" id="shelf_manipulation" autoplay controls muted loop playsinline height="50%">
-            <source src="./static/videos/shelf_manip.mp4"
+        <div class="item item-shelf_manipulation_compressed">
+          <video poster="" id="shelf_manipulation_compressed" autoplay controls muted loop playsinline height="50%">
+            <source src="./static/videos/shelf_manip_compressed.mp4"
                     type="video/mp4">
           </video>
         </div>
-        <div class="item item-bridge_thirdperson">
-          <video poster="" id="bridge_thirdperson" autoplay controls muted loop playsinline height="50%">
-            <source src="./static/videos/toy_kitchen_v2.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-       <div class="item item-cluttered_grasp_novel_battery">
-          <video poster="" id="cluttered_grasp_novel_battery" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/novel_cluttered.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-two_object_grasp_candy">
-          <video poster="" id="two_object_grasp_candy" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/two_object_v2.mp4"
+        <div class="item item-bridge_thirdperson_compressed">
+          <video poster="" id="bridge_thirdperson_compressed" autoplay controls muted loop playsinline height="50%">
+            <source src="./static/videos/toy_kitchen_compressed.mp4"
                     type="video/mp4">
           </video>
         </div>
@@ -304,6 +427,7 @@
     </div>
   </div>
 </section>
+-->
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -349,19 +473,20 @@
         While manipulation and navigation seemingly differ significantly in terms of hardware, observations, and action representations, they contain many similar sensorimotor principles. For example, both domains require the learned robot policy to have an understanding of collisions and geometry. Both domains also require the agent to perform some form of visual servoing. We leverage these insights to pose manipulation and navigation as a single goal-reaching task. 
           </p>
         </div>
-	<div class="content has-text-centered">
-          <video id="moma-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/equivariance.mp4"
+	<div class="videoequi">
+  	<div id="vid-twoleftequi">
+          <video poster="" id="manip_equi_compressed" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manip_equi_compressed.mp4"
                     type="video/mp4">
           </video>
-        </div>
-        <!--/ Re-rendering. -->
-	</div>
+  	</div>
+  	<div id="vid-tworightequi">
+          <video poster="" id="nav_equi_compressed" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/nav_equi_compressed.mp4"
+                    type="video/mp4">
+          </video>
+  	</div>
+      </div>
       </div>
     </div>
     <!--/ Animation. -->
@@ -369,23 +494,152 @@
   </div>
 </section>
 
+<!--
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Generalization to Novel Objects</h2>
+        <h2 class="title is-3">Generalization to Novel Manipulation Tasks</h2>
         </div>
       </div>
         <div class="content has-text-justified">
           <p>
-          Co-training with navigation data allows for a 30% improvement in a goal-conditioned grasping task. The policy is evaluated on 5 objects that were not seen in the training dataset, and is tasked with grasping the correct object given its goal image.
+          Co-training with navigation data allows for 19% improvement in a goal-conditioned grasping compared to a manipulation-only policy over 5 tasks. The policy is evaluated on 5 objects that were not seen in the training dataset, and is tasked with grasping the correct object given its goal image.
           </p>
         </div>
     </div>
 </section>
 
 
+<section class="hero is-light is-small">
+  <div class="hero-body">
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'Two-Object Grasp')" id="defaultOpen">Two-Object Grasp</button>
+  <button class="tablinks" onclick="openCity(event, 'Cluttered Grasp')">Cluttered Grasp</button>
+  <button class="tablinks" onclick="openCity(event, 'Toy Kitchen')">Toy Kitchen</button>
+  <button class="tablinks" onclick="openCity(event, 'Shelf Manipulation')">Shelf Manipulation</button>
+  <button class="tablinks" onclick="openCity(event, 'Cluttered Grasp Novel')">Cluttered Grasp Novel</button>
+</div>
 
+<div id="Two-Object Grasp" class="tabcontent">
+  <div class="video">
+  <div id="vid-twoleft">
+          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/compressed_manip/novel_cluttered.mp4"
+                    type="video/mp4">
+          </video>
+  </div>
+  <div id="vid-tworight">
+          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+             <source src="./static/videos/compressed_manip/novel_cluttered.mp4"
+                    type="video/mp4">         
+	  </video>
+  </div>
+  </div>
+</div>
+
+<div id="Cluttered Grasp" class="tabcontent">
+  <div class="video">
+  <div id="vid-left">
+          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+             <source src="./static/videos/compressed_manip/novel_cluttered.mp4"
+                    type="video/mp4">         
+	  </video>
+  </div>
+  <div id="vid-leftmid">
+          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
+                    type="video/mp4">
+          </video>
+  </div>
+
+  <div id="vid-mid">
+          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/compressed_manip/novel_cluttered.mp4"
+                    type="video/mp4">              
+<source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
+                    type="video/mp4">
+          </video>
+  </div>
+          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+             <source src="./static/videos/compressed_manip/novel_cluttered.mp4"
+                    type="video/mp4">   
+          </video>
+  </div>
+
+  <div id="vid-right">
+          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+             <source src="./static/videos/compressed_manip/novel_cluttered.mp4"
+                    type="video/mp4">   
+          </video>
+  </div>
+  </div>
+
+</div>
+-->
+
+<div id="Cluttered Grasp Novel" class="tabcontent">
+  <div class="video">
+  <div id="vid-left">
+          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
+                    type="video/mp4">
+          </video>
+  </div>
+  <div id="vid-leftmid">
+          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
+                    type="video/mp4">
+          </video>
+  </div>
+
+  <div id="vid-mid">
+          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
+                    type="video/mp4">
+          </video>
+  </div>
+  <div id="vid-rightmid">
+          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
+                    type="video/mp4">
+          </video>
+  </div>
+
+  <div id="vid-right">
+          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
+                    type="video/mp4">
+          </video>
+  </div>
+  </div>
+</div>
+
+
+</div>
+
+<script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+</div>
+</section>
+   
+<!--
 <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
@@ -424,6 +678,7 @@
     </div>
   </div>
 </section>
+-->
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -434,7 +689,7 @@
       </div>
         <div class="content has-text-justified">
           <p>
-          Given a topological map of the environment, our policy can control new robots to navigate around scenes while avoiding obstacles.
+          Given a topological map of the environment, our policy can control new robots to navigate around new scenes while avoiding obstacles.
 	  </p>
         </div>
     </div>
