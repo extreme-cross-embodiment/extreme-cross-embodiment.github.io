@@ -131,6 +131,17 @@
     box-sizing:border-box;
 }
 
+#vid-onemid {
+    float: left;
+    padding:5px;
+    width:20%;
+    box-sizing:border-box;
+    float: left; 
+    margin-right: 40%;
+    margin-left: 40%;
+}
+
+
 #vid-twoleft {
     float: left;
     padding:5px;
@@ -494,7 +505,6 @@
   </div>
 </section>
 
-<!--
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
@@ -514,112 +524,76 @@
 <section class="hero is-light is-small">
   <div class="hero-body">
 <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Two-Object Grasp')" id="defaultOpen">Two-Object Grasp</button>
-  <button class="tablinks" onclick="openCity(event, 'Cluttered Grasp')">Cluttered Grasp</button>
-  <button class="tablinks" onclick="openCity(event, 'Toy Kitchen')">Toy Kitchen</button>
-  <button class="tablinks" onclick="openCity(event, 'Shelf Manipulation')">Shelf Manipulation</button>
-  <button class="tablinks" onclick="openCity(event, 'Cluttered Grasp Novel')">Cluttered Grasp Novel</button>
+  <button class="tablinks" onclick="openTab(event, 'Cluttered Grasp Novel')" id="defaultOpen">Cluttered Grasp Novel</button>
+  <button class="tablinks" onclick="openTab(event, 'Toy Kitchen')">Toy Kitchen</button>
+  <button class="tablinks" onclick="openTab(event, 'Shelf Manipulation')">Shelf Manipulation</button>
 </div>
 
-<div id="Two-Object Grasp" class="tabcontent">
-  <div class="video">
-  <div id="vid-twoleft">
-          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/compressed_manip/novel_cluttered.mp4"
-                    type="video/mp4">
-          </video>
-  </div>
-  <div id="vid-tworight">
-          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
-             <source src="./static/videos/compressed_manip/novel_cluttered.mp4"
-                    type="video/mp4">         
-	  </video>
-  </div>
-  </div>
-</div>
-
-<div id="Cluttered Grasp" class="tabcontent">
-  <div class="video">
-  <div id="vid-left">
-          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
-             <source src="./static/videos/compressed_manip/novel_cluttered.mp4"
-                    type="video/mp4">         
-	  </video>
-  </div>
-  <div id="vid-leftmid">
-          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
-                    type="video/mp4">
-          </video>
-  </div>
-
-  <div id="vid-mid">
-          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/compressed_manip/novel_cluttered.mp4"
-                    type="video/mp4">              
-<source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
-                    type="video/mp4">
-          </video>
-  </div>
-          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
-             <source src="./static/videos/compressed_manip/novel_cluttered.mp4"
-                    type="video/mp4">   
-          </video>
-  </div>
-
-  <div id="vid-right">
-          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
-             <source src="./static/videos/compressed_manip/novel_cluttered.mp4"
-                    type="video/mp4">   
-          </video>
-  </div>
-  </div>
-
-</div>
--->
 
 <div id="Cluttered Grasp Novel" class="tabcontent">
-  <div class="video">
   <div id="vid-left">
           <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
-                    type="video/mp4">
-          </video>
+             <source src="./static/videos/novel_cluttered/novel_cluttered_battery.mp4"
+                    type="video/mp4">         
+	  </video>
   </div>
   <div id="vid-leftmid">
           <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
-                    type="video/mp4">
-          </video>
+             <source src="./static/videos/novel_cluttered/novel_cluttered_candy.mp4"
+                    type="video/mp4">         
+	  </video>
   </div>
 
   <div id="vid-mid">
           <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
-                    type="video/mp4">
-          </video>
+             <source src="./static/videos/novel_cluttered/novel_cluttered_carrot.mp4"
+                    type="video/mp4">         
+	  </video>
   </div>
   <div id="vid-rightmid">
           <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
-                    type="video/mp4">
-          </video>
+             <source src="./static/videos/novel_cluttered/novel_cluttered_measuring_cup.mp4"
+                    type="video/mp4">         
+	  </video>
   </div>
 
   <div id="vid-right">
           <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
-                    type="video/mp4">
-          </video>
+             <source src="./static/videos/novel_cluttered/novel_cluttered_tool.mp4"
+                    type="video/mp4">         
+	  </video>
   </div>
   </div>
 </div>
-
+<div id="Toy Kitchen" class="tabcontent">
+  <div id="vid-twoleft">
+	<video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+             <source src="./static/videos/toy_kitchen/toy_kitchen_eggplant.mp4"
+                    type="video/mp4">         
+	 </video>
+  </div>
+  <div id="vid-tworight">
+	<video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+             <source src="./static/videos/toy_kitchen/toy_kitchen_strawberry.mp4"
+                    type="video/mp4">         
+	 </video>
+  </div>
+  </div>
+</div>
+<div id="Shelf Manipulation" class="tabcontent">
+  <div id="vid-onemid">
+	<video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
+             <source src="./static/videos/shelf_manip/shelf_manip.mp4"
+                    type="video/mp4">        
+	 </video>
+  </div>
+  </div>
+</div>
 
 </div>
 
 <script>
-function openCity(evt, cityName) {
+function openTab(evt, cityName) {
   var i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -639,46 +613,6 @@ document.getElementById("defaultOpen").click();
 </div>
 </section>
    
-<!--
-<section class="hero is-light is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item item-cluttered_grasp_novel_battery">
-          <video poster="" id="cluttered_grasp_novel_battery" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_battery/eval.MOV"
-                    type="video/mp4">
-          </video>
-        </div>
-       <div class="item item-cluttered_grasp_novel_candy">
-          <video poster="" id="cluttered_grasp_novel_candy" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_candy/eval.MOV"
-                    type="video/mp4">
-          </video>
-        </div>
-       <div class="item item-cluttered_grasp_novel_carrot">
-          <video poster="" id="cluttered_grasp_novel_battery" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_carrot/eval.mov"
-                    type="video/mp4">
-          </video>
-        </div>
-       <div class="item item-cluttered_grasp_novel_measuring_cup">
-          <video poster="" id="cluttered_grasp_novel_measuring_cup" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_measuring_cup/eval.mov"
-                    type="video/mp4">
-          </video>
-        </div>
-       <div class="item item-cluttered_grasp_novel_tool">
-          <video poster="" id="cluttered_grasp_novel_tool" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/manipulation_eval_videos/cluttered_grasp_novel/cluttered_grasp_novel_tool/eval.MOV"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
--->
 
 <section class="section">
   <div class="container is-max-desktop">
