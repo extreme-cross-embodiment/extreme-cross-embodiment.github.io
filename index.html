@@ -96,6 +96,13 @@
     width: 100%;
     height: 100%;
 }
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block
+}
+
 .video-layout {
     max-width: 500px;
     border: 1px solid green;
@@ -359,7 +366,18 @@
 -->
 <section class="hero is-light is-small">
   <div class="hero-body">
-    <div class="container">
+     <video class="center" id="moma-video"
+                 controls
+		 autoplay
+                 muted
+                 preload
+                 playsinline
+                 width="80%">
+            <source src="./static/videos/website_cover_video_compressed.mp4"
+                    type="video/mp4">
+          </video>
+  <!--  
+  <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
 	<div class="item item-cluttered_grasp_compressed">
           <video poster="" id="cluttered_grasp_compressed" autoplay controls muted loop playsinline height="50%">
@@ -423,6 +441,7 @@
         </div>
       </div>
     </div>
+    -->
   </div>
 </section>
 
