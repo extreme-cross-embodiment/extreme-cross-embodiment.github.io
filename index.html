@@ -485,10 +485,10 @@
           We train the first <i>extreme cross embodiment</i> policy capable of controlling a heterogenous set of embodiments, including robotic arms, drones, quadrupeds, mobile bases, and mobile manipulators.
 	  </p>
           <p>
-	  We conduct over 1000 experiments to empirically characterize the effects of dataset size and variability, model size, and architecture choices. Our experiments reveal that policies co-trained with all manipulation and mobile data demonstrate an average of 19% improvement over 5 different manipulation tasks than training with manipulation data alone, and a 12% improvement over 3 different navigation platforms.
+	  We conduct over 1000 experiments to empirically characterize the effects of dataset size and variability, model size, and architecture choices. Our experiments reveal that policies co-trained with all manipulation and mobile data demonstrate an average of 20% improvement over 5 different manipulation tasks than training with manipulation data alone, and a 5-7% improvement over 4 different navigation platforms.
 	</p>
 	<p>
-	We show that our policy can generalize to two new robots: a mobile manipulator and a quadrotor, without any data specific to this embodiments. 	
+	We then show that our policy can generalize to a mobile manipulator without any data specific to this embodiments. 	
        </p>
         </div>
       </div>
@@ -548,7 +548,7 @@
       </div>
         <div class="content has-text-justified">
           <p>
-          Co-training with navigation data allows for 19% improvement in a goal-conditioned grasping compared to a manipulation-only policy over 5 tasks. The policy is evaluated on 5 objects that were not seen in the training dataset, and is tasked with grasping the correct object given its goal image.
+          Co-training with navigation data allows for 20% improvement in a goal-conditioned grasping compared to a manipulation-only policy over 5 tasks. The policy is evaluated on 5 objects that were not seen in the training dataset, and is tasked with grasping the correct object given its goal image.
           </p>
         </div>
     </div>
@@ -657,7 +657,7 @@ document.getElementById("defaultOpen").click();
       </div>
         <div class="content has-text-justified">
           <p>
-          Given a topological map of the environment, our policy can control new robots to navigate around new scenes while avoiding obstacles.
+          Given a topological map of the environment, our policy can control new robots to navigate around new scenes while avoiding obstacles. Policies trained with both manipulation and navigation data have 5-7\% better success than navigation-only.
 	  </p>
         </div>
     </div>
